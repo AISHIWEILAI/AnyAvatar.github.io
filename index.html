@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<!--   <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF"> -->
+<!--   <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+<!--   <title>Audiodynamic: Real-Time Audio-Driven Talking Head and Torso Generation with Disentangled Head Pose and Expressions</title> -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">MoGaFace: Momentum-Guided and Texture-Aware Gaussian Avatars for Consistent Facial Geometry</h1>
+<!--           <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              Yujian Liu<sup>1,2</sup>,</span>
+            <span class="author-block">
+              Shidang Xu<sup>2</sup>,</span>
+            <span class="author-block">
+              Jing Guo<sup>1,3</sup>,
+            </span>
+            <span class="author-block">
+              Zairan Wang<sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Xiaoli Liu<sup>1</sup>,
+            </span>
+          </div> -->
+
+<!--           <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>AiShiWeiLai AI Research, Beijing, China,</span>
+            <span class="author-block"><sup>2</sup>South China University of Technology, Guangzhou, China</span>
+            <span class="author-block"><sup>3</sup>Beijing Institute of Technology, Beijing, China</span>
+          </div> -->
+
+          <div class="column has-text-centered">
+            <!-- Conference information. -->
+            <div class="is-size-4 publication-venue"
+                 style="font-weight: 600; margin-bottom: 18px;">
+              PRCV (Poster)
+            </div>
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+<!--               <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+<!--               <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+              </span> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="abstract">
+  <div class="container is-max-desktop">
+    <div class="abstract">
+      <h1 class="title is-3" style="font-size: 2.1em; font-weight: bold; margin-bottom: 20px; text-align: center;">Abstract</h1>
+      <div style="text-align: justify">
+        <p>Existing 3D head avatar reconstruction methods typically follow a two-stage pipeline, relying on tracked FLAME meshes derived from facial landmarks, followed by Gaussian-based rendering. However, the inevitable geometric misalignment between the meshes and target images often degrades rendering quality and suppresses fine details. In this paper, we propose MoGaFace, a novel framework that jointly refines geometry and texture during Gaussian rendering. Specifically, we introduce Momentum-Guided Consistent Geometry, which leverages a momentum-updated expression bank and an expression-aware correction mechanism to mitigate geometry–image misalignment and enforce multi-view consistency. In addition, we propose Latent Texture Attention, which encodes compact multi-view cues into head-aware representations, enabling geometry-aware texture refinement via integration into ellipsoidal Gaussian primitives. Extensive experiments show that MoGaFace achieves high-fidelity head avatar reconstruction and significantly improves novel-view synthesis quality, even under inaccurate mesh initialization and unconstrained real-world.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="Overall_Pipeline">
+  <div class="container is-max-desktop">
+    <div class="Overall_Pipeline">
+      <h1 class="title is-3" style="font-size: 2.1em; font-weight: bold; margin-bottom: 20px; margin-top: 30px; text-align: center;">Overall Framework</h1>
+      <img src="./static/images/pipline.png" alt="Audiodynamic Image" style="width: 100%; height: auto;">
+      <h2 class="text-align: justify" style="width: 100%; text-align: justify; margin-top: 3px; margin-bottom: 20px;"> 
+        Given multi-view images, MoGaFace initializes FLAME via tracking, refines expressions through a Momentum-Guided Geometry module for consistent and accurate fitting, and embeds 3D Gaussian textures using a Latent Texture Attention module that exploits multi-view texture cues.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser" style="box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 8px; width: 70%; max-width: 1000px; margin: 0 auto;margin-bottom: 30px;">
+  <div class="container is-max-desktop" style="padding: 0; margin: 0;">
+    <div class="hero-body">
+      <!-- h2 居中对齐 is-max-desktop-->
+      <h2 class="title is-3" style="font-size: 2.1em; font-weight: bold; margin-bottom: 20px; text-align: center;">Camera-Aware Settings</h2>
+      <!-- h3 左对齐，并且去除左右内边距 -->
+      <h3 class="title is-4" style="text-align: left; margin: 0; padding: 20px 0px;">Novel View Synthesis</h3>
+      <video width="100%" autoplay loop muted playsinline style="margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+        <source src="./static/videos/novel_view_emo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video> 
+      <video width="100%" autoplay loop muted playsinline style="margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+        <source src="./static/videos/novel_view_sen.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>      
+      <h3 class="title is-4" style="text-align: left; margin: 0; padding: 20px 0px;">Self-Reenactment</h3>
+      <video width="100%" autoplay loop muted playsinline style="margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+        <source src="./static/videos/033.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <video width="100%" autoplay loop muted playsinline style="margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+        <source src="./static/videos/074.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <h3 class="title is-4" style="text-align: left; margin: 0; padding: 20px 0px;">Cross-identity Reenactment</h3>
+      <video width="100%" autoplay loop muted playsinline style="margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+        <source src="./static/videos/cross_id_new2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>           
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser" style="box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 8px; width: 70%; max-width: 1000px; margin: 0 auto;margin-bottom: 30px;">
+  <div class="container is-max-desktop" style="padding: 0; margin: 0;">
+    <div class="hero-body">
+            <!-- h2 居中对齐 is-max-desktop-->
+      <h2 class="title is-3" style="font-size: 2.1em; font-weight: bold; margin-bottom: 20px; text-align: center;">Camera-Free Settings</h2>
+      <p style="margin: 0 0 12px 0; line-height: 1.6;">
+        In the camera-free setting, we operate on self-recorded videos without calibrated cameras, estimating FLAME meshes from camera poses predicted in a monocular manner. The required camera parameters are obtained using a monocular method.
+      </p>
+      <video width="100%" autoplay loop muted playsinline style="margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+        <source src="./static/videos/emo3d.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      </h2>
+    </div>
+  </div>
+</section>
+  
+  
+
+<footer class="footer">
+  <div class="container">
+  </div>
+</footer>
+
+</body>
+</html>
