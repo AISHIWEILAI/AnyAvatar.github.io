@@ -425,39 +425,9 @@
 
       <div class="section-description">
         <p>
-          Most existing Gaussian head avatar methods rely on accurately
-          calibrated multi-view cameras. Under uncalibrated camera settings,
-          where camera poses are obtained from image-based prediction,
-          inaccurate pose initialization becomes a major obstacle to Gaussian
-          head modeling. This challenge arises in two coupled stages:
-          inaccurate camera poses can undermine cross-view head observability
-          and destabilize the geometric prior during FLAME fitting, while
-          residual pose errors can introduce projection inconsistencies during
-          Gaussian Splatting (GS) optimization, causing overfitting to the
-          training views and degrading novel-view quality.
+        Most existing Gaussian head avatar methods rely on accurately calibrated multi-view cameras. Under uncalibrated camera settings, where camera poses are obtained from image-based prediction, inaccurate pose initialization becomes a major obstacle for Gaussian head modeling. This challenge arises in two coupled stages: inaccurate camera poses can undermine cross-view head observability and destabilize the geometric prior during FLAME fitting, while residual pose errors can introduce projection inconsistency during Gaussian Splatting (GS) optimization, causing overfitting to training views and degrading novel-view quality. To this end, we propose AnyAvatar, a unified framework for high-fidelity and controllable Gaussian head avatars under uncalibrated camera settings. First, we introduce Feasibility-Guided FLAME Initialization, which localizes a feasible FLAME head position from coarse predicted poses through Constrained Ray Proximity Localization, restoring stable cross-view head observability and providing a reliable geometric prior. We then introduce Pose-Driven Gaussian Optimization, which jointly refines camera poses, Gaussian attributes, and FLAME parameters during GS training, while using a structured triplane-based appearance module to suppress pose-error compensation and improve cross-view consistency. Extensive experiments on multiple uncalibrated datasets and self-captured data show that AnyAvatar achieves state-of-the-art performance and remains robust across diverse camera pose prediction models.
         </p>
 
-        <p style="margin-top: 1rem;">
-          To address these challenges, we propose AnyAvatar, a unified
-          framework for constructing high-fidelity and controllable Gaussian
-          head avatars under uncalibrated camera settings. First, we introduce
-          Feasibility-Guided FLAME Initialization, which localizes a feasible
-          FLAME head position from coarsely predicted camera poses through
-          Constrained Ray Proximity Localization. This procedure restores
-          stable cross-view head observability and provides a reliable
-          geometric prior.
-        </p>
-
-        <p style="margin-top: 1rem;">
-          We then introduce Pose-Driven Gaussian Optimization, which jointly
-          refines camera poses, Gaussian attributes, and FLAME parameters
-          during GS training. A structured triplane-based appearance module is
-          further employed to suppress appearance compensation caused by pose
-          errors and improve cross-view consistency. Extensive experiments on
-          multiple uncalibrated datasets and self-captured data demonstrate
-          that AnyAvatar achieves state-of-the-art performance and remains
-          robust across diverse camera-pose prediction models.
-        </p>
       </div>
 
     </div>
