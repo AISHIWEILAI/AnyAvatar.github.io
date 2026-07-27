@@ -124,6 +124,27 @@
       margin-left: 0.15rem;
     }
 
+    .publication-teaser {
+      width: 100%;
+      max-width: 1000px;
+      margin: 2.25rem auto 0;
+    }
+
+    .publication-teaser-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    .publication-teaser-caption {
+      margin-top: 0.85rem;
+      font-size: 1.02rem;
+      line-height: 1.6;
+      color: #4a4a4a;
+      text-align: center;
+    }
+
     .project-section {
       padding: 2.6rem 1.5rem;
     }
@@ -220,6 +241,14 @@
         font-size: 1.05rem !important;
       }
 
+      .publication-teaser {
+        margin-top: 1.75rem;
+      }
+
+      .publication-teaser-caption {
+        font-size: 0.95rem;
+      }
+
       .project-section {
         padding: 2rem 1rem;
       }
@@ -282,6 +311,30 @@
               </span>
 
               <span class="author-block">
+                <span class="author-name">Yuting Liu</span>,
+              </span>
+
+              <span class="author-block">
+                <span class="author-name">Chuang Chen</span>,
+              </span>
+
+              <span class="author-block">
+                <span class="author-name">Xinyi Jiang</span>,
+              </span>
+
+              <span class="author-block">
+                <span class="author-name">Zhupeng Jiang</span>,
+              </span>
+
+              <span class="author-block">
+                <span class="author-name">Peng Cao</span>,
+              </span>
+
+              <span class="author-block">
+                <span class="author-name">Shidang Xu</span>,
+              </span>
+
+              <span class="author-block">
                 <span class="author-name">Xiaoli Liu</span><sup>&dagger;</sup>
               </span>
             </div>
@@ -293,7 +346,7 @@
 
             <!-- Conference -->
             <div class="is-size-4 publication-venue-line">
-              ACM MM 2026
+              ACM MM 2026 (Poster)
             </div>
 
             <!-- Author notes -->
@@ -336,6 +389,20 @@
               </span>
 
             </div>
+
+            <!-- Teaser figure -->
+            <figure class="publication-teaser">
+              <img
+                class="publication-teaser-image"
+                src="./static/images/figure1.png"
+                alt="Cross-view consistent Gaussian head avatars produced by AnyAvatar under uncalibrated camera settings"
+              >
+              <figcaption class="publication-teaser-caption">
+                AnyAvatar produces cross-view consistent Gaussian head avatars
+                under uncalibrated camera settings.
+              </figcaption>
+            </figure>
+
           </div>
         </div>
       </div>
@@ -411,7 +478,7 @@
       >
 
       <p class="framework-description">
-        AnyAvatar takes a multi-view head video sequence with uncalibrated
+        Overall Framework of AnyAvatar. AnyAvatar takes a multi-view head video sequence with uncalibrated
         camera poses as input and reconstructs a high-fidelity, controllable
         3D head avatar. Specifically, we first estimate coarse camera poses
         using an image-based predictor and apply Feasibility-Guided FLAME
