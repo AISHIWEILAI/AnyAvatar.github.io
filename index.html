@@ -1,552 +1,209 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
   <meta charset="utf-8">
+<!--   <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF"> -->
+<!--   <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+<!--   <title>Audiodynamic: Real-Time Audio-Driven Talking Head and Torso Generation with Disentangled Head Pose and Expressions</title> -->
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1"
-  >
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
 
-  <meta
-    name="description"
-    content="AnyAvatar: High-Fidelity Gaussian Head Avatars under Uncalibrated Camera Settings."
-  >
+    function gtag() {
+      dataLayer.push(arguments);
+    }
 
-  <meta
-    name="keywords"
-    content="AnyAvatar, Gaussian Avatar, Gaussian Splatting, Head Avatar, FLAME, Uncalibrated Cameras, 3D Gaussian Splatting"
-  >
+    gtag('js', new Date());
 
-  <title>
-    AnyAvatar: High-Fidelity Gaussian Head Avatars under Uncalibrated Camera Settings
-  </title>
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
 
-  <!-- Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-    rel="stylesheet"
-  >
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
 
-  <!-- Stylesheets -->
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
-  >
-
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="icon" href="./static/images/favicon.svg">
 
-  <!-- Page-specific styles -->
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: "Noto Sans", sans-serif;
-      color: #363636;
-      background-color: #ffffff;
-    }
-
-    .publication-header {
-      padding-top: 3.5rem;
-      padding-bottom: 2.75rem;
-    }
-
-    .publication-title {
-      max-width: 1100px;
-      margin-right: auto;
-      margin-bottom: 1.5rem !important;
-      margin-left: auto;
-      line-height: 1.12;
-      letter-spacing: -0.025em;
-    }
-
-    .publication-authors {
-      max-width: 1000px;
-      margin-right: auto;
-      margin-bottom: 0.35rem;
-      margin-left: auto;
-      line-height: 1.8;
-      text-align: center;
-    }
-
-    .author-block {
-      display: inline-block;
-      margin-right: 0.12rem;
-      white-space: nowrap;
-    }
-
-    .author-name {
-      color: #3273dc;
-      font-weight: 500;
-    }
-
-    .publication-affiliation {
-      margin-top: 0.3rem;
-      margin-bottom: 0.3rem;
-      color: #363636;
-      line-height: 1.6;
-      text-align: center;
-    }
-
-    .publication-venue-line {
-      margin-top: 0.35rem;
-      margin-bottom: 0.35rem;
-      color: #363636;
-      font-weight: 600;
-      line-height: 1.5;
-      text-align: center;
-    }
-
-    .publication-notes {
-      margin-top: 0.4rem;
-      margin-bottom: 1.35rem;
-      color: #4a4a4a;
-      line-height: 1.6;
-      text-align: center;
-    }
-
-    .publication-links {
-      margin-top: 0.75rem;
-      text-align: center;
-    }
-
-    .publication-links .link-block {
-      margin-right: 0.15rem;
-      margin-left: 0.15rem;
-    }
-
-    .publication-teaser {
-      width: 100%;
-      max-width: 1000px;
-      margin: 2.25rem auto 0;
-    }
-
-    .publication-teaser-image {
-      display: block;
-      width: 100%;
-      height: auto;
-      margin: 0 auto;
-    }
-
-    .publication-teaser-caption {
-      margin-top: 0.85rem;
-      font-size: 1.02rem;
-      line-height: 1.6;
-      color: #4a4a4a;
-      text-align: center;
-    }
-
-    .project-section {
-      padding: 2.6rem 1.5rem;
-    }
-
-    .project-container {
-      width: 100%;
-      max-width: 1000px;
-      margin-right: auto;
-      margin-left: auto;
-    }
-
-    .section-title {
-      margin-bottom: 1.4rem !important;
-      font-size: 2.1rem !important;
-      font-weight: 700 !important;
-      line-height: 1.25;
-      text-align: center;
-    }
-
-    .section-description {
-      font-size: 1.08rem;
-      line-height: 1.75;
-      text-align: justify;
-    }
-
-    .framework-image {
-      display: block;
-      width: 100%;
-      height: auto;
-      margin-top: 0.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .framework-description {
-      margin-top: 0.75rem;
-      font-size: 1.05rem;
-      line-height: 1.75;
-      text-align: justify;
-    }
-
-    .demo-card {
-      width: 100%;
-      max-width: 1000px;
-      margin: 1rem auto 3rem;
-      padding: 2rem;
-      overflow: hidden;
-      border-radius: 10px;
-      background-color: #ffffff;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
-    }
-
-    .demo-description {
-      margin-bottom: 1.5rem;
-      font-size: 1.05rem;
-      line-height: 1.75;
-      text-align: justify;
-    }
-
-    .demo-subtitle {
-      margin-top: 0.25rem !important;
-      margin-bottom: 1rem !important;
-      padding: 0 !important;
-      text-align: left;
-    }
-
-    .demo-video {
-      display: block;
-      width: 100%;
-      height: auto;
-      margin-bottom: 0;
-      border-radius: 8px;
-      background-color: #000000;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
-    }
-
-    .footer {
-      padding-top: 2rem;
-      padding-bottom: 2rem;
-      background-color: #fafafa;
-    }
-
-    @media screen and (max-width: 768px) {
-      .publication-header {
-        padding-top: 2.25rem;
-        padding-bottom: 2rem;
-      }
-
-      .publication-title {
-        font-size: 2.15rem !important;
-        line-height: 1.18;
-      }
-
-      .publication-authors {
-        font-size: 1.05rem !important;
-      }
-
-      .publication-teaser {
-        margin-top: 1.75rem;
-      }
-
-      .publication-teaser-caption {
-        font-size: 0.95rem;
-      }
-
-      .project-section {
-        padding: 2rem 1rem;
-      }
-
-      .section-title {
-        font-size: 1.8rem !important;
-      }
-
-      .section-description,
-      .framework-description,
-      .demo-description {
-        font-size: 1rem;
-        text-align: left;
-      }
-
-      .demo-card {
-        width: calc(100% - 2rem);
-        padding: 1.25rem;
-      }
-    }
-  </style>
-
-  <!-- JavaScript -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
 </head>
-
 <body>
 
-  <!-- =========================================================
-       Project header
-       ========================================================= -->
-  <section class="hero">
-    <div class="hero-body publication-header">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">MoGaFace: Momentum-Guided and Texture-Aware Gaussian Avatars for Consistent Facial Geometry</h1>
+<!--           <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              Yujian Liu<sup>1,2</sup>,</span>
+            <span class="author-block">
+              Shidang Xu<sup>2</sup>,</span>
+            <span class="author-block">
+              Jing Guo<sup>1,3</sup>,
+            </span>
+            <span class="author-block">
+              Zairan Wang<sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Xiaoli Liu<sup>1</sup>,
+            </span>
+          </div> -->
+
+<!--           <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>AiShiWeiLai AI Research, Beijing, China,</span>
+            <span class="author-block"><sup>2</sup>South China University of Technology, Guangzhou, China</span>
+            <span class="author-block"><sup>3</sup>Beijing Institute of Technology, Beijing, China</span>
+          </div> -->
+
           <div class="column has-text-centered">
-
-            <!-- Project title -->
-            <h1 class="title is-1 publication-title">
-              AnyAvatar: High-Fidelity Gaussian Head Avatars
-              under Uncalibrated Camera Settings
-            </h1>
-
-            <!-- Authors -->
-            <div class="is-size-5 publication-authors">
-              <span class="author-block">
-                <span class="author-name">Yujian Liu</span><sup>*</sup>,
-              </span>
-
-              <span class="author-block">
-                <span class="author-name">Dongxu Shen</span><sup>*</sup>,
-              </span>
-
-              <span class="author-block">
-                <span class="author-name">Haoran Li</span><sup>*</sup>,
-              </span>
-
-              <span class="author-block">
-                <span class="author-name">Yuting Liu</span>,
-              </span>
-
-              <span class="author-block">
-                <span class="author-name">Chuang Chen</span>,
-              </span>
-
-              <span class="author-block">
-                <span class="author-name">Xinyi Jiang</span>,
-              </span>
-
-              <span class="author-block">
-                <span class="author-name">Zhupeng Jiang</span>,
-              </span>
-
-              <span class="author-block">
-                <span class="author-name">Peng Cao</span>,
-              </span>
-
-              <span class="author-block">
-                <span class="author-name">Shidang Xu</span>,
-              </span>
-
-              <span class="author-block">
-                <span class="author-name">Xiaoli Liu</span><sup>&dagger;</sup>
-              </span>
+            <!-- Conference information. -->
+            <div class="is-size-4 publication-venue"
+                 style="font-weight: 600; margin-bottom: 18px;">
+              PRCV (Poster)
             </div>
-
-            <!-- Affiliation -->
-            <div class="is-size-5 publication-affiliation">
-              AiShiWeiLai AI Research
-            </div>
-
-            <!-- Conference -->
-            <div class="is-size-4 publication-venue-line">
-              ACM MM 2026 (Poster)
-            </div>
-
-            <!-- Author notes -->
-            <div class="is-size-6 publication-notes">
-              <sup>*</sup> Equal contribution.
-              <span style="margin-left: 0.35rem;">
-                <sup>&dagger;</sup> Corresponding author.
-              </span>
-            </div>
-
-            <!-- Publication links -->
             <div class="publication-links">
-
-              <!-- Paper link -->
+              <!-- PDF Link. -->
               <span class="link-block">
-                <a
-                  href=""
-                  class="external-link button is-normal is-rounded is-dark"
-                  aria-label="Paper"
-                >
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
-                    <i class="fas fa-file-pdf"></i>
+                      <i class="fas fa-file-pdf"></i>
                   </span>
                   <span>Paper</span>
                 </a>
               </span>
-
-              <!-- Code link -->
-              <span class="link-block">
-                <a
-                  href=""
-                  class="external-link button is-normal is-rounded is-dark"
-                  aria-label="Code"
-                >
+<!--               <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
-                    <i class="fab fa-github"></i>
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
                   </span>
                   <span>Code</span>
-                </a>
+                  </a>
               </span>
-
+              <!-- Dataset Link. -->
+<!--               <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+              </span> -->
             </div>
-
-            <!-- Teaser figure -->
-            <figure class="publication-teaser">
-              <img
-                class="publication-teaser-image"
-                src="./static/images/figure1.png"
-                alt="Cross-view consistent Gaussian head avatars produced by AnyAvatar under uncalibrated camera settings"
-              >
-              <figcaption class="publication-teaser-caption">
-                AnyAvatar produces cross-view consistent Gaussian head avatars
-                under uncalibrated camera settings.
-              </figcaption>
-            </figure>
-
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-
-  <!-- =========================================================
-       Abstract
-       ========================================================= -->
-  <section class="section project-section">
-    <div class="project-container">
-
-      <h2 class="title is-3 section-title">
-        Abstract
-      </h2>
-
-      <div class="section-description">
-        <p>
-          Most existing Gaussian head avatar methods rely on accurately
-          calibrated multi-view cameras. Under uncalibrated camera settings,
-          where camera poses are obtained from image-based prediction,
-          inaccurate pose initialization becomes a major obstacle to Gaussian
-          head modeling. This challenge arises in two coupled stages:
-          inaccurate camera poses can undermine cross-view head observability
-          and destabilize the geometric prior during FLAME fitting, while
-          residual pose errors can introduce projection inconsistencies during
-          Gaussian Splatting (GS) optimization, causing overfitting to the
-          training views and degrading novel-view quality.
-        </p>
-
-        <p style="margin-top: 1rem;">
-          To address these challenges, we propose AnyAvatar, a unified
-          framework for constructing high-fidelity and controllable Gaussian
-          head avatars under uncalibrated camera settings. First, we introduce
-          Feasibility-Guided FLAME Initialization, which localizes a feasible
-          FLAME head position from coarsely predicted camera poses through
-          Constrained Ray Proximity Localization. This procedure restores
-          stable cross-view head observability and provides a reliable
-          geometric prior.
-        </p>
-
-        <p style="margin-top: 1rem;">
-          We then introduce Pose-Driven Gaussian Optimization, which jointly
-          refines camera poses, Gaussian attributes, and FLAME parameters
-          during GS training. A structured triplane-based appearance module is
-          further employed to suppress appearance compensation caused by pose
-          errors and improve cross-view consistency. Extensive experiments on
-          multiple uncalibrated datasets and self-captured data demonstrate
-          that AnyAvatar achieves state-of-the-art performance and remains
-          robust across diverse camera-pose prediction models.
-        </p>
+<section class="abstract">
+  <div class="container is-max-desktop">
+    <div class="abstract">
+      <h1 class="title is-3" style="font-size: 2.1em; font-weight: bold; margin-bottom: 20px; text-align: center;">Abstract</h1>
+      <div style="text-align: justify">
+        <p>Existing 3D head avatar reconstruction methods typically follow a two-stage pipeline, relying on tracked FLAME meshes derived from facial landmarks, followed by Gaussian-based rendering. However, the inevitable geometric misalignment between the meshes and target images often degrades rendering quality and suppresses fine details. In this paper, we propose MoGaFace, a novel framework that jointly refines geometry and texture during Gaussian rendering. Specifically, we introduce Momentum-Guided Consistent Geometry, which leverages a momentum-updated expression bank and an expression-aware correction mechanism to mitigate geometry–image misalignment and enforce multi-view consistency. In addition, we propose Latent Texture Attention, which encodes compact multi-view cues into head-aware representations, enabling geometry-aware texture refinement via integration into ellipsoidal Gaussian primitives. Extensive experiments show that MoGaFace achieves high-fidelity head avatar reconstruction and significantly improves novel-view synthesis quality, even under inaccurate mesh initialization and unconstrained real-world.</p>
       </div>
-
     </div>
-  </section>
+  </div>
+</section>
 
-
-  <!-- =========================================================
-       Overall framework
-       ========================================================= -->
-  <section class="section project-section">
-    <div class="project-container">
-
-      <h2 class="title is-3 section-title">
-        Overall Framework
+<section class="Overall_Pipeline">
+  <div class="container is-max-desktop">
+    <div class="Overall_Pipeline">
+      <h1 class="title is-3" style="font-size: 2.1em; font-weight: bold; margin-bottom: 20px; margin-top: 30px; text-align: center;">Overall Framework</h1>
+      <img src="./static/images/pipline.png" alt="Audiodynamic Image" style="width: 100%; height: auto;">
+      <h2 class="text-align: justify" style="width: 100%; text-align: justify; margin-top: 3px; margin-bottom: 20px;"> 
+        Given multi-view images, MoGaFace initializes FLAME via tracking, refines expressions through a Momentum-Guided Geometry module for consistent and accurate fitting, and embeds 3D Gaussian textures using a Latent Texture Attention module that exploits multi-view texture cues.
       </h2>
+    </div>
+  </div>
+</section>
 
-      <img
-        class="framework-image"
-        src="./static/images/pipeline.png"
-        alt="Overview of the AnyAvatar framework"
-      >
+<section class="hero teaser" style="box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 8px; width: 70%; max-width: 1000px; margin: 0 auto;margin-bottom: 30px;">
+  <div class="container is-max-desktop" style="padding: 0; margin: 0;">
+    <div class="hero-body">
+      <!-- h2 居中对齐 is-max-desktop-->
+      <h2 class="title is-3" style="font-size: 2.1em; font-weight: bold; margin-bottom: 20px; text-align: center;">Camera-Aware Settings</h2>
+      <!-- h3 左对齐，并且去除左右内边距 -->
+      <h3 class="title is-4" style="text-align: left; margin: 0; padding: 20px 0px;">Novel View Synthesis</h3>
+      <video width="100%" autoplay loop muted playsinline style="margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+        <source src="./static/videos/novel_view_emo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video> 
+      <video width="100%" autoplay loop muted playsinline style="margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+        <source src="./static/videos/novel_view_sen.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>      
+      <h3 class="title is-4" style="text-align: left; margin: 0; padding: 20px 0px;">Self-Reenactment</h3>
+      <video width="100%" autoplay loop muted playsinline style="margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+        <source src="./static/videos/033.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <video width="100%" autoplay loop muted playsinline style="margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+        <source src="./static/videos/074.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <h3 class="title is-4" style="text-align: left; margin: 0; padding: 20px 0px;">Cross-identity Reenactment</h3>
+      <video width="100%" autoplay loop muted playsinline style="margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+        <source src="./static/videos/cross_id_new2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>           
+      </h2>
+    </div>
+  </div>
+</section>
 
-      <p class="framework-description">
-        Overall Framework of AnyAvatar. AnyAvatar takes a multi-view head video sequence with uncalibrated
-        camera poses as input and reconstructs a high-fidelity, controllable
-        3D head avatar. Specifically, we first estimate coarse camera poses
-        using an image-based predictor and apply Feasibility-Guided FLAME
-        Initialization to recover a reliable FLAME prior. We then perform
-        Pose-Driven Gaussian Optimization by jointly refining the FLAME
-        parameters, Gaussian attributes, and camera poses. A structured
-        triplane appearance module is incorporated to suppress appearance
-        compensation caused by residual pose errors and improve cross-view
-        consistency.
+<section class="hero teaser" style="box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 8px; width: 70%; max-width: 1000px; margin: 0 auto;margin-bottom: 30px;">
+  <div class="container is-max-desktop" style="padding: 0; margin: 0;">
+    <div class="hero-body">
+            <!-- h2 居中对齐 is-max-desktop-->
+      <h2 class="title is-3" style="font-size: 2.1em; font-weight: bold; margin-bottom: 20px; text-align: center;">Camera-Free Settings</h2>
+      <p style="margin: 0 0 12px 0; line-height: 1.6;">
+        In the camera-free setting, we operate on self-recorded videos without calibrated cameras, estimating FLAME meshes from camera poses predicted in a monocular manner. The required camera parameters are obtained using a monocular method.
       </p>
-
+      <video width="100%" autoplay loop muted playsinline style="margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+        <source src="./static/videos/emo3d.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      </h2>
     </div>
-  </section>
+  </div>
+</section>
+  
+  
 
-
-  <!-- =========================================================
-       Camera-free results
-       ========================================================= -->
-  <section class="demo-card">
-
-    <h2 class="title is-3 section-title">
-      Camera-Free Settings
-    </h2>
-
-    <p class="demo-description">
-      We evaluate AnyAvatar on NeRSemble, EmoTalk3D, and a self-captured
-      identity without calibrated camera parameters. Camera poses are
-      initialized using VGGT, and the corresponding FLAME meshes are estimated
-      under these image-based pose predictions.
-    </p>
-
-    <h3 class="title is-4 demo-subtitle">
-      Novel View Synthesis
-    </h3>
-
-    <video
-      class="demo-video"
-      width="100%"
-      autoplay
-      loop
-      muted
-      playsinline
-      controls
-      preload="metadata"
-    >
-      <source
-        src="./static/videos/Novel_View_Synthesis.mp4"
-        type="video/mp4"
-      >
-      Your browser does not support the video tag.
-    </video>
-
-  </section>
-
-
-  <!-- =========================================================
-       Footer
-       ========================================================= -->
-  <footer class="footer">
-    <div class="container">
-      <div class="content has-text-centered">
-        <p>
-          AnyAvatar: High-Fidelity Gaussian Head Avatars under
-          Uncalibrated Camera Settings
-        </p>
-      </div>
-    </div>
-  </footer>
+<footer class="footer">
+  <div class="container">
+  </div>
+</footer>
 
 </body>
 </html>
