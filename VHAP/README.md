@@ -48,7 +48,7 @@ Our code relies on FLAME. Please download assets from the [official website](htt
 [For NeRSemble Dataset](doc/nersemble.md)
 
 
-[For EmoTalk3d](doc/emotalk3d.md)
+[For EmoTalk3d Dataset](doc/emotalk3d.md)
 
 ## Acknowledgments
 
