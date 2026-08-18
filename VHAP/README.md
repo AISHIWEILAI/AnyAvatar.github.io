@@ -45,7 +45,6 @@ Our code relies on FLAME. Please download assets from the [official website](htt
 
 ## Usage
 
-### Multiview
 [For NeRSemble Dataset](doc/nersemble.md)
 
 
