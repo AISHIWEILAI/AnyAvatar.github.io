@@ -1,7 +1,5 @@
 ## For NeRSemble Dataset
 
-### 0. Config Setting
-
 ### 1. Preprocess
 
 This step extracts frames from video(s), then run foreground matting for each frame, which requires GPU.
