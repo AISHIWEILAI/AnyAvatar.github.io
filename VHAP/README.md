@@ -52,5 +52,5 @@ Our code relies on FLAME. Please download assets from the [official website](htt
 
 ## Acknowledgments
 
-Part of this codebase is borrowed from [VHAP](https://github.com/ShenhanQian/VHAP). We thank the authors for releasing their head tracking pipeline.
+Part of this codebase is borrowed from [VHAP](https://github.com/ShenhanQian/VHAP). We thank the authors for releasing their code.
 
