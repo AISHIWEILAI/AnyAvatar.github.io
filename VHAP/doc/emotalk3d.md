@@ -1,4 +1,4 @@
-## For NeRSemble Dataset
+## For EmoTalk3d Dataset
 
 ### 1. Preprocess
 
