@@ -1,8 +1,5 @@
 # AnyAvatar: High-Fidelity Gaussian Head Avatars under Uncalibrated Camera Settings
 
-This repository contains the official project page for [AnyAvatar](https://syncanimation.github.io/AnyAvatar.github.io/).
-
-🎉 **AnyAvatar has been accepted to ACM Multimedia (ACM MM) 2026.**
 
 ## Authors
 
@@ -13,4 +10,5 @@ This repository contains the official project page for [AnyAvatar](https://synca
 <sup>3</sup> The Hong Kong University of Science and Technology (Guangzhou), Guangzhou, China  
 <sup>4</sup> Northeastern University in China, Shenyang, China
 
+🎉 **AnyAvatar has been accepted to ACM Multimedia (ACM MM) 2026.**
 
