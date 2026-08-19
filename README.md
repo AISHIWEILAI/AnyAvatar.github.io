@@ -29,5 +29,11 @@ After this step, we obtain the FLAME mesh heads that will be used for Gaussian t
 
 ### Step 3. Gaussian Training
 
+<div align="center">
+<img src="static/videos/high_renders.gif" alt="AnyAvatar high-fidelity renders" width="40%"/>
+</div>
+
 With the mesh heads obtained from VHAP, we can start training Gaussian head avatars. For specific instructions, please refer to [AnyAvatar/README.md](AnyAvatar/README.md).
+
+
 
