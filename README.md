@@ -7,8 +7,6 @@
 <sup>1</sup> AiShiWeiLai AI Research  <sup>2</sup> South China University of Technology  
 <sup>3</sup> The Hong Kong University of Science and Technology (Guangzhou)  <sup>4</sup> Northeastern University
 
-<sup>&#42;</sup> Equal contribution  <sup>†</sup> Corresponding authors
-
 </div>
 
 🎉 **AnyAvatar has been accepted to ACM Multimedia (ACM MM) 2026.**
