@@ -13,4 +13,21 @@
 
 </div>
 
+## Usage
+
+### Step 1. Coarse Camera Pose Initialization
+
+Obtain coarse camera poses with [VGGT](https://github.com/facebookresearch/vggt). Please refer to the official VGGT repository for installation and inference.
+
+In our implementation, we use the **first frame of the neutral expression** to estimate camera poses.
+
+### Step 2. VHAP Training
+
+We use the camera poses estimated by VGGT to train VHAP. For specific instructions, please refer to [VHAP/README.md](VHAP/README.md).
+
+After this step, we obtain the FLAME mesh heads that will be used for Gaussian training.
+
+### Step 3. Gaussian Training
+
+With the mesh heads obtained from VHAP, we can start training Gaussian head avatars. For specific instructions, please refer to [AnyAvatar/README.md](AnyAvatar/README.md).
 
