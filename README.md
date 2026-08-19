@@ -23,13 +23,15 @@ In our implementation, we use the **first frame of the neutral expression** to e
 
 ### Step 2. VHAP Training
 
+<div align="center">
+<img src="static/images/Mesh.png" alt="FLAME mesh heads from VHAP" width="100%"/>
+</div>
+
 We use the camera poses estimated by VGGT to train VHAP. For specific instructions, please refer to [VHAP/README.md](VHAP/README.md).
 
 After this step, we obtain the FLAME mesh heads that will be used for Gaussian training.
 
-<div align="center">
-<img src="static/images/Mesh.png" alt="FLAME mesh heads from VHAP" width="100%"/>
-</div>
+
 
 ### Step 3. Gaussian Training
 
